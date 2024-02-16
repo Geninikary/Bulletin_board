@@ -1,0 +1,12 @@
+{% extends 'flatpages/default.html' %}
+
+{% block content %}
+<h1>Изменить пост</h1>
+<hr>
+<form action="" method="post">
+    {% csrf_token %}
+    {{ from.as_p }}
+    {{ from.media }}
+    <input type="submit" value="Изменить"/>
+</form>
+{% endblock content %}

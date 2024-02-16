@@ -1,0 +1,43 @@
+{% extends 'flatpages/default.html' %}
+
+{% block title %}
+Пост
+{% endblock title %}
+
+{% block content %}
+
+    <h2>{{ post_one.heading}}</h2>
+    <p>{{ post_one.text }}</p>
+    <p>{{ post_one.create_at }}</p>
+    <hr><br>
+
+    <form>
+        <button><a href="{% url 'create_message' post_one.id %}">Оставить отзыв</a></button>
+    </form>
+
+    <br>
+
+    <form>
+        <button><a href="{% url 'delete_post' post_one.id %}">Удалить</a></button>
+    </form>
+
+
+    {% if message.on_post.all %}
+        {% for mes in message.on_post.all %}
+            <p>{{ mes.msg_content}}</p>
+            <p>{{ mes.sender }}</p>
+            <p>{{ mes.create }}</p>
+            <form>
+                <button><a href="{% url 'access' %}">Добавть отклик</a> </button>
+            </form>
+            <form>
+                <button><a href="{% url 'delete_message' %}">Удалить отклик</a> </button>
+            </form>
+        {% endfor %}
+    {% else %}
+        <p>Нет откликов</p>
+    {% endif %}
+
+    <br><br>
+
+{% endblock content %}

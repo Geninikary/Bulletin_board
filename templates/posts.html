@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% extends 'flatpages/default.html' %}
+
+{% block title %}
+<h6> Все посты </h6>
+{% endblock title %}
+
+
+{% block content %}
+
+
+    {# Поля формы и поиск постов #}
+    <form action="" method="get">
+       {{ filterset.form.as_p }}
+        <input type="submit" value="Найти"/>
+    </form>
+
+    {% for post in posts_all %}
+        <hr>
+        <h3>
+            {% for category in post.categories.all %}
+            <a href="{%url 'category_list' category.id%}">{{category}}</a>
+            {% endfor %}
+        </h3>
+        <h3>
+            <a href="{% url 'post_one' post.id %}">{{ post.heading }}</a>
+        </h3>
+        <p> {{ post.text }} </p>
+        <p> {{ post.create_at }} </p>
+        <hr>
+            <p>Количество откликов: {{message.id|length }}</p>
+
+    {% endfor %}
+
+{% endblock content %}

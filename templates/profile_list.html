@@ -1,0 +1,18 @@
+{% extends 'flatpages/profile.html' %}
+
+{% block content %}
+    {% if user %}
+    <table>
+        <tr>
+            <td>Логин: {{ user.username }}</td>
+        </tr>
+        <tr>
+            <td>Email: {{user.username }}</td>
+        </tr>
+    </table>
+
+    <button>Стать автором</button>
+    <br>
+    <button><a href="{% url 'account_logout' %}">Выйти</a></button>
+    {% endif %}
+{% endblock %}

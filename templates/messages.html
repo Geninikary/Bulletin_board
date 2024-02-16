@@ -1,0 +1,19 @@
+
+{% block content %}
+    {# Поля формы и поиск сообщений #}
+    <form action="" method="get">
+       {{ filterset.form.as_p }}
+        <input type="submit" value="Найти"/>
+    </form>
+
+    {% for message in messages_all %}
+        <hr>
+        <h3> {{ message.on_post }} </h3>
+        <p> {{ message.msg_content }} </p>
+        <p> {{ message.create_at }} </p>
+        <hr><br>
+            <p>Количество откликов: {{ message|lenght }}</p>
+
+    {% endfor %}
+
+{% endblock content %}

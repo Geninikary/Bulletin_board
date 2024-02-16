@@ -1,0 +1,7 @@
+{% extends 'flatpages/default' %}
+
+{% block content %}
+    <h3>Страница авторизованного пользователя {{ request.user.username }}</h3>
+    <div>Здесь содержится персональная информация для каждого пользователя</div>
+    <button> <a href="{% url 'logout_user' %}">Выйти</a> </button>
+{% endblock %}
